@@ -52,4 +52,40 @@ describe('Tree class tests', () => {
 
         expect(tree.root).toEqual(new Node(3, null, null));
     })
+
+    // delete()
+    test('handles deletion of leaf node', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        tree.delete(4);
+        tree.delete(1);
+
+        expect(tree.root.right.right).toBeNull();
+        expect(tree.root.left).toBeNull();
+    })
+
+    test('handles deletion of internal (non-leaf) node with single child', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        tree.delete(3);
+
+        expect(tree.right.key).toBe(4);
+    })
+
+    test('handles deletion of internal (non-leaf) node with multiple children', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        tree.delete(5);
+
+        expect(tree.right.key).toBe(4);
+        expect(tree.right.left).toBeNull();
+        expect(tree.right.right.key).toBe(6);
+    })
+
+    test('handles deletion of BST root node', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        tree.delete(3);
+
+        expect(tree.root.key).toBe(4)
+        expect(tree.right.key).toBe(5);
+        expect(tree.right.left).toBeNull();
+        expect(tree.right.right.key).toBe(6);
+    })
 })
