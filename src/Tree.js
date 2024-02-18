@@ -3,7 +3,7 @@ import { Node } from './Node.js';
 export class Tree {
     constructor(arr = []) {
         const processedArr = this.#removeDupesAndSortArray(arr);
-        this.root = buildTree(processedArr);
+        this.root = this.buildTree(processedArr);
     }
 
     #removeDupesAndSortArray = (arr) => {
