@@ -23,4 +23,33 @@ export class Tree {
 
         return rootNode;
     }
+
+    insert = (value, node = this.root) => {
+
+        // For insertion into empty BST
+        if (this.root === null) {
+            this.root = new Node(value);
+            return;
+        }
+
+        // Base case for recursion below
+        if (node === null) {
+            return new Node(value);
+        }
+
+        // Recursive calls
+        if (value < node.key) {
+            node.left = this.insert(value, node.left);
+        }
+        if (value > node.key) {
+            node.right = this.insert(value, node.right);
+        }
+
+        // For insertion of repeated value, do nothing
+        if (value == node.key) {
+            return node;
+        }
+
+        return node;
+    }
 } 
