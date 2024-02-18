@@ -2,7 +2,8 @@ import { Node } from './Node';
 
 export class Tree {
     constructor(arr = []) {
-        this.root = this.#removeDupesAndSortArray(arr);
+        const processedArr = this.#removeDupesAndSortArray(arr);
+        this.root = buildTree(processedArr);
     }
 
     #removeDupesAndSortArray = (arr) => {
