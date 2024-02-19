@@ -52,4 +52,62 @@ export class Tree {
 
         return node;
     }
+
+    delete = (value, node = this.root) => {
+
+        // For deletion from empty BST
+        if (this.root === null) {
+            return;
+        }
+
+        // Base case for recursion
+        if (node === null) {
+            return node;
+        }
+
+        // Recursive calls
+        if (value < node.key) {
+            node.left = this.delete(value, node.left);
+            return node;
+        } else if (value > node.key) {
+            node.right = this.delete(value, node.right);
+            return node;
+        }  
+        
+        // For deletion of leaf nodes and nodes with one child
+        if (node.left === null) {
+            return node.right;
+        } else if (node.right === null) {
+            return node.left;
+        } else {
+            // For deletion of internal (non-leaf) node with two children
+            // Find the inorder successor
+            let successorParent = node;
+            let successor = node.right; 
+            while (successor.left !== null) {
+                successorParent = successor;
+                successor = successor.left;
+            }
+
+            // Handle successor that is right child of node to delete (i.e. No left child)
+            if (successorParent === node) {
+                successorParent.right = successor.right;
+            } else if (successorParent !== node) {
+                // Handle successor that is further down the tree
+                successorParent.left = successor.right
+            } 
+
+            node.key = successor.key;
+
+            return node;
+        }
+
+            
+
+
+
+        // return node;
+    }
+
+
 } 
