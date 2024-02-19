@@ -365,8 +365,8 @@ describe('Tree class tests', () => {
     test('handles unbalanced BST', () => {
         const tree = new Tree([1, 2, 3, 4]);
         tree.insert(5);
-        const rebalancedTree = tree.rebalance();
-        const balance = rebalancedTree.isBalanced();
+        tree.rebalance();
+        const balance = tree.isBalanced();
 
         expect(balance).toBe(true);
     })
