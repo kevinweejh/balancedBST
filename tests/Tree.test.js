@@ -271,4 +271,21 @@ describe('Tree class tests', () => {
 
         expect(dfsArr).toEqual([]);
     })
+
+    // height(node)
+    test('handles leaf node', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const height = tree.height(2);
+
+        expect(height).toBe(0);
+    })
+
+    test('handles internal (non-leaf) node', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const height = tree.height(1);
+        const heightRoot = tree.height(3);
+
+        expect(height).toBe(1);
+        expect(heightRoot).toBe(2);
+    })
 })
