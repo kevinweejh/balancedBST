@@ -285,7 +285,7 @@ describe('Tree class tests', () => {
         const tree = new Tree([1, 2, 3, 4, 5, 6]);
         const node = tree.find(1);
         const height = tree.height(node);
-        const rootNode = tree.find(1);
+        const rootNode = tree.find(3);
         const rootHeight = tree.height(rootNode);
 
         expect(height).toBe(1);
