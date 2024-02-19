@@ -228,4 +228,18 @@ export class Tree {
             return outputArr;
         }
     }
+
+    height = (node = this.root) => {
+        // Base case for recursion
+        if (node === null) {
+            return -1; // Ensure leaf nodes have height 0, empty BST has height -1
+        }
+        
+        // Recursive calls to find left and right subtree heights
+        const leftHeight = this.height(node.left);
+        const rightHeight = this.height(node.right);
+
+        // Height of node is max height of its subtrees + 1
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 } 
