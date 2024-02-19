@@ -104,5 +104,25 @@ export class Tree {
         }
     }
 
+    find = (value, node = this.root) => {
+        
+        // Handle searching in empty BST
+        if (this.root === null) {
+            throw new Error("Unable to search empty BST.");
+        }
 
+        // Base case for recursion
+        if (node === null) {
+            return null; // Value not found
+        } else if (value === node.key) {
+            return node; // Value found
+        } 
+        
+        // Recursive calls
+        if (value < node.key) {
+            return this.find(value, node.left);
+        } else if (value > node.key) {
+            return this.find(value, node.right);
+        } 
+    }
 } 
