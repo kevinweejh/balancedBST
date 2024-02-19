@@ -128,4 +128,26 @@ describe('Tree class tests', () => {
         expect(tree.root.right.right.left).toBeNull();
         expect(tree.root.right.right.right).toBeNull();
     })
+
+    // find()
+    test('handles existing leaf node', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const node = tree.find(1);
+
+        expect(node).toEqual(new Node(1, null, null));
+    })
+
+    test('handles existing internal (non-leaf) node', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const node = tree.find(3);
+
+        expect(node).toEqual(new Node(3, null, null));
+    })
+
+    test('handles non-existence node', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const node = tree.find(5);
+
+        expect(node).toThrow(/not found/);
+    })
 })
