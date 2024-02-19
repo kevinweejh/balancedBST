@@ -298,4 +298,36 @@ describe('Tree class tests', () => {
 
         expect(height).toBe(-1);
     })
+
+    // depth(node)
+    test('handles root', () => {
+        const tree = new Tree([1]);
+        const node = tree.find(1);
+        const depth = tree.depth(node);
+
+        expect(depth).toBe(0)
+    })
+
+    test('handles empty BST', () => {
+        const tree = new Tree();
+        const depth = tree.depth(tree.root);
+
+        expect(depth).toBe(-1)
+    })
+
+    test('handle BST of height 3', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const node = tree.find(1)
+        const depth = tree.depth(node);
+
+        expect(depth).toBe(1);
+    })
+
+    test('handle BST of height 3', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const node = tree.find(4)
+        const depth = tree.depth(node);
+
+        expect(depth).toBe(2);
+    })
 })
