@@ -288,4 +288,11 @@ describe('Tree class tests', () => {
         expect(height).toBe(1);
         expect(heightRoot).toBe(2);
     })
+
+    test('handles empty BST', () => {
+        const tree = new Tree();
+        const height = tree.height(1);
+
+        expect(height).toBe(0);
+    })
 })
