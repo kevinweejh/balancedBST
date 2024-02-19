@@ -166,10 +166,12 @@ export class Tree {
             return outputArr;
         }
 
+        // Base case for recursion
         if (node === null) {
             return;
         } 
         
+        // Recursive calls
         outputArr.push(node.key);
         this.preOrder(node.left, outputArr);
         this.preOrder(node.right, outputArr)
