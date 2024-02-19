@@ -242,4 +242,22 @@ export class Tree {
         // Height of node is max height of its subtrees + 1
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+    depth = (givenNode, node = this.root, counter = 0) => {
+        // Handles empty BST
+        if (this.root === null) {
+            return -1;
+        }
+
+        // Handles single node BST
+        if (givenNode.key === node.key) {
+            return counter;
+        }
+
+        if (givenNode.key < node.key) {
+            return this.depth(givenNode, node.left, ++counter)
+        } else if (givenNode.key > node.key) {
+            return this.depth(givenNode, node.right, ++counter);
+        }
+    }
 } 
