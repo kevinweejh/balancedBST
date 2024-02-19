@@ -294,9 +294,8 @@ describe('Tree class tests', () => {
 
     test('handles empty BST', () => {
         const tree = new Tree();
+        const height = tree.height(tree.root);
 
-        expect(() => {
-            tree.height(1);
-        }).toThrow(/^Unable to get height of empty BST.$/)
+        expect(height).toBe(-1);
     })
 })
