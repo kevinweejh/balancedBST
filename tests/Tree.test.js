@@ -330,4 +330,34 @@ describe('Tree class tests', () => {
 
         expect(depth).toBe(2);
     })
+
+    // isBalanced()
+    test('handles balanced BST', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const balance = tree.isBalanced();
+
+        expect(balance).toBe(true);
+    })
+
+    test('handles unbalanced BST', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const unbalancedTree = tree.insert(5);
+        const balance = unbalancedTree.isBalanced();
+
+        expect(balance).toBe(false);
+    })
+
+    test('handles empty BST'), () => {
+        const tree = new Tree();
+        const balance = tree.isBalanced();
+
+        expect(balance).toBe(true);
+    }
+
+    test('handles single-node BST'), () => {
+        const tree = new Tree([1]);
+        const balance = tree.isBalanced();
+
+        expect(balance).toBe(true);
+    }
 })
