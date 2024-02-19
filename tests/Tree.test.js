@@ -14,6 +14,24 @@ describe('Tree class tests', () => {
         expect(tree.root.left.right).toBeNull();
         expect(tree.root.right.left).toBeNull();
         expect(tree.root.right.right).toBeNull();
+
+        const treeBig = new Tree([1, 2, 3, 4, 5, 6]);
+
+        expect(treeBig.root.key).toBe(3);
+        expect(treeBig.root.left.key).toBe(1);
+        expect(treeBig.root.right.key).toBe(5);
+
+        expect(treeBig.root.left.left).toBeNull();
+        expect(treeBig.root.left.right.key).toBe(2);
+        expect(treeBig.root.right.left.key).toBe(4);
+        expect(treeBig.root.right.right.key).toBe(6);
+
+        expect(treeBig.root.left.right.left).toBeNull();
+        expect(treeBig.root.left.right.right).toBeNull();
+        expect(treeBig.root.right.left.left).toBeNull();
+        expect(treeBig.root.right.left.right).toBeNull();
+        expect(treeBig.root.right.right.left).toBeNull();
+        expect(treeBig.root.right.right.right).toBeNull();
     });
 
     test('handles empty array', () => {
