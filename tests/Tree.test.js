@@ -74,9 +74,9 @@ describe('Tree class tests', () => {
         const tree = new Tree([1, 2, 3, 4, 5, 6]);
         tree.delete(5);
 
-        expect(tree.root.right.key).toBe(4);
-        expect(tree.root.right.left).toBeNull();
-        expect(tree.root.right.right.key).toBe(6);
+        expect(tree.root.right.key).toBe(6);
+        expect(tree.root.right.left.key).toBe(4); 
+        expect(tree.root.right.right).toBeNull();
     })
 
     test('handles deletion of BST root node', () => {
