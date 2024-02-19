@@ -205,4 +205,26 @@ describe('Tree class tests', () => {
 
         expect(bfsArr).toEqual([]);
     })
+
+    // preorder(callback)
+    test('handles BST of height 3', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const dfsArr = tree.preOrder();
+
+        expect(dfsArr).toEqual([2, 1, 3, 4]);
+    })
+
+    test('handles BST of height 4', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const dfsArr = tree.preOrder();
+
+        expect(dfsArr).toEqual([3, 1, 2, 5, 4, 6]);
+    })
+
+    test('handles empty BST', () => {
+        const tree = new Tree();
+        const dfsArr = tree.preOrder();
+
+        expect(dfsArr).toEqual([]);
+    })
 })
