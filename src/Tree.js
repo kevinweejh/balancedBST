@@ -205,4 +205,27 @@ export class Tree {
             return outputArr;
         }
     }
+
+    postOrder = (node = this.root, outputArr = [], callback) => {
+        // Handles empty BST
+        if (this.root === null) {
+            return outputArr;
+        }
+
+        // Base case for recursion
+        if (node === null) {
+            return;
+        } 
+        
+        // Recursive calls
+        this.postOrder(node.left, outputArr);
+        this.postOrder(node.right, outputArr);
+        outputArr.push(node.key);
+
+        if (callback) {
+            return outputArr.map(callback)
+        } else {
+            return outputArr;
+        }
+    }
 } 
