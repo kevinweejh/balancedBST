@@ -3,7 +3,7 @@ import { Node } from '../src/Node.js';
 
 describe('Tree class tests', () => {
     // buildTree()
-    test('creates a balanced BST', () => {
+    test('creates a balanced BST of height 3', () => {
         const tree = new Tree([1, 3, 2, 2]);
         
         expect(tree.root.key).toBe(2);
@@ -15,29 +15,54 @@ describe('Tree class tests', () => {
         expect(tree.root.right.left).toBeNull();
         expect(tree.root.right.right).toBeNull();
 
-        const treeBig = new Tree([1, 2, 3, 4, 5, 6]);
-
-        expect(treeBig.root.key).toBe(3);
-        expect(treeBig.root.left.key).toBe(1);
-        expect(treeBig.root.right.key).toBe(5);
-
-        expect(treeBig.root.left.left).toBeNull();
-        expect(treeBig.root.left.right.key).toBe(2);
-        expect(treeBig.root.right.left.key).toBe(4);
-        expect(treeBig.root.right.right.key).toBe(6);
-
-        expect(treeBig.root.left.right.left).toBeNull();
-        expect(treeBig.root.left.right.right).toBeNull();
-        expect(treeBig.root.right.left.left).toBeNull();
-        expect(treeBig.root.right.left.right).toBeNull();
-        expect(treeBig.root.right.right.left).toBeNull();
-        expect(treeBig.root.right.right.right).toBeNull();
     });
+
+    test('creates a balanced BST of height 4', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+
+        expect(tree.root.key).toBe(3);
+        expect(tree.root.left.key).toBe(1);
+        expect(tree.root.right.key).toBe(5);
+
+        expect(tree.root.left.left).toBeNull();
+        expect(tree.root.left.right.key).toBe(2);
+        expect(tree.root.right.left.key).toBe(4);
+        expect(tree.root.right.right.key).toBe(6);
+
+        expect(tree.root.left.right.left).toBeNull();
+        expect(tree.root.left.right.right).toBeNull();
+        expect(tree.root.right.left.left).toBeNull();
+        expect(tree.root.right.left.right).toBeNull();
+        expect(tree.root.right.right.left).toBeNull();
+        expect(tree.root.right.right.right).toBeNull();
+    })
 
     test('handles empty array', () => {
         const tree = new Tree([]);
 
         expect(tree.root).toBeNull();
+    })
+
+    test('creates a balanced BST from alphabets', () => {
+        const tree = new Tree(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']);
+
+        expect(tree.root.key).toBe('E');
+        expect(tree.root.left.key).toBe('B');
+        expect(tree.root.right.key).toBe('H');
+
+        expect(tree.root.left.left.key).toBe('A');
+        expect(tree.root.left.right.key).toBe('C');
+        expect(tree.root.right.left.key).toBe('F');
+        expect(tree.root.right.right.key).toBe('I');
+
+        expect(tree.root.left.left.left).toBeNull();
+        expect(tree.root.left.left.right).toBeNull();
+        expect(tree.root.left.right.left).toBeNull();
+        expect(tree.root.left.right.right.key).toBe('D');
+        expect(tree.root.right.left.left).toBeNull();
+        expect(tree.root.right.left.right.key).toBe('G');
+        expect(tree.root.right.right.left).toBeNull();
+        expect(tree.root.right.right.right.key).toBe('J');
     })
 
     // insert()
