@@ -275,24 +275,28 @@ describe('Tree class tests', () => {
     // height(node)
     test('handles leaf node', () => {
         const tree = new Tree([1, 2, 3, 4, 5, 6]);
-        const height = tree.height(2);
+        const node = tree.find(2);
+        const height = tree.height(node);
 
         expect(height).toBe(0);
     })
 
     test('handles internal (non-leaf) node', () => {
         const tree = new Tree([1, 2, 3, 4, 5, 6]);
-        const height = tree.height(1);
-        const heightRoot = tree.height(3);
+        const node = tree.find(1);
+        const height = tree.height(node);
+        const rootNode = tree.find(1);
+        const rootHeight = tree.height(rootNode);
 
         expect(height).toBe(1);
-        expect(heightRoot).toBe(2);
+        expect(rootHeight).toBe(2);
     })
 
     test('handles empty BST', () => {
         const tree = new Tree();
-        const height = tree.height(1);
 
-        expect(height).toBe(0);
+        expect(() => {
+            tree.height(1);
+        }).toThrow(/^Unable to get height of empty BST.$/)
     })
 })
