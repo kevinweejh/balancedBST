@@ -141,13 +141,21 @@ describe('Tree class tests', () => {
         const tree = new Tree([1, 2, 3, 4]);
         const node = tree.find(3);
 
-        expect(node).toEqual(new Node(3, null, null));
+        expect(node).toEqual(new Node(3, null, new Node(4, null, null)));
     })
 
     test('handles non-existence node', () => {
         const tree = new Tree([1, 2, 3, 4]);
         const node = tree.find(5);
 
-        expect(node).toThrow(/not found/);
+        expect(node).toBeNull();
+    })
+
+    test('handles empty BST', () => {
+        const tree = new Tree();
+        
+        expect(() => {
+            tree.find(1);
+        }).toThrow(/^Unable to search empty BST.$/)
     })
 })
