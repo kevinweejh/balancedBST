@@ -360,4 +360,14 @@ describe('Tree class tests', () => {
 
         expect(balance).toBe(true);
     })
+
+    // rebalance()
+    test('handles unbalanced BST', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        tree.insert(5);
+        const rebalancedTree = tree.rebalance();
+        const balance = rebalancedTree.isBalanced();
+
+        expect(balance).toBe(true);
+    })
 })
