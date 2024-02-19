@@ -260,4 +260,54 @@ export class Tree {
             return this.depth(givenNode, node.right, ++counter);
         }
     }
+
+    isBalanced = (node = this.root) => {
+        // Base case for recursion, also handles empty and single node BSTs
+        if (node === null) {
+            return true;
+        }
+
+        // Recursive calls
+        const leftHeight = this.#checkHeight(node.left);
+        if (leftHeight === -1) { 
+            return false; // Left subtree is unbalanced
+        }
+
+        const rightHeight = this.#checkHeight(node.right);
+        if (rightHeight === -1) { 
+            return false; // Right subtree is unbalanced
+        }
+
+        // Check balance condition for the current node
+        const heightDiff = Math.abs(leftHeight - rightHeight);
+        if (heightDiff > 1) {
+            return false; // Current node is unbalanced
+        } else {
+            return true; // Current node is balanced
+        }
+    }
+
+    #checkHeight = (childNode) => {
+        // Base case for recursion
+        if (childNode === null) {
+            return 0; // Height of a null node (leaf's child) is 0
+        }
+    
+        // Recursively calls to get height of left and right subtrees
+        const leftHeight = this.#checkHeight(childNode.left);
+        const rightHeight = this.#checkHeight(childNode.right);
+    
+        // Check if the left or right subtrees are unbalanced
+        if (leftHeight === -1 || rightHeight === -1) {
+            return -1; // Propagate the unbalanced marker up
+        }
+    
+        // Check the balance condition for the current node
+        const heightDiff = Math.abs(leftHeight - rightHeight);
+        if (heightDiff > 1) {
+            return -1; // Current node is unbalanced, propagate the marker up
+        } else {
+            return Math.max(leftHeight, rightHeight) + 1; // Return the height of the node
+        }
+    }
 } 
