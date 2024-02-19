@@ -125,4 +125,38 @@ export class Tree {
             return this.find(value, node.right);
         } 
     }
+    
+    levelOrder = (node = this.root, callback) => {
+        let outputArr = [];
+        let queue = [];
+
+        // Handles empty BST
+        if (this.root === null) {
+            return outputArr;
+        }
+
+        queue.push(node);
+        outputArr = this.#bfsTraversal(queue);
+
+        if (callback) {
+            return outputArr.map(callback)
+        } else {
+            return outputArr;
+        }
+    }
+
+    #bfsTraversal = (queue, outputArr = []) => {
+        while (queue.length !== 0) {
+            let current = queue.shift();
+            if (current.left) {
+                queue.push(current.left);
+            }
+            if (current.right) {
+                queue.push(current.right);
+            }
+            outputArr.push(current.key);
+        }
+
+        return outputArr;
+    }
 } 
