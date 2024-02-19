@@ -54,6 +54,7 @@ export class Tree {
     }
 
     delete = (value, node = this.root) => {
+        // Ref: https://www.youtube.com/watch?v=wcIRPqTR3Kc
 
         // For deletion from empty BST
         if (this.root === null) {
