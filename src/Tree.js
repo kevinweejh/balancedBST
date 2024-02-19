@@ -159,4 +159,25 @@ export class Tree {
 
         return outputArr;
     }
+
+    preOrder = (node = this.root, outputArr = [], callback) => {
+        // Handles empty BST
+        if (this.root === null) {
+            return outputArr;
+        }
+
+        if (node === null) {
+            return;
+        } 
+        
+        outputArr.push(node.key);
+        this.preOrder(node.left, outputArr);
+        this.preOrder(node.right, outputArr)
+
+        if (callback) {
+            return outputArr.map(callback)
+        } else {
+            return outputArr;
+        }
+    }
 } 
