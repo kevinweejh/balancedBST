@@ -310,4 +310,10 @@ export class Tree {
             return Math.max(leftHeight, rightHeight) + 1; // Return the height of the node
         }
     }
+
+    rebalance = (node = this.root) => {
+        if (this.root === null) return;
+        const newArr = [...new Set(this.inOrder().sort((a, b) => a - b))];
+        this.root = this.buildTree(newArr);
+    }
 } 
