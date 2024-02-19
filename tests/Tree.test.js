@@ -158,4 +158,19 @@ describe('Tree class tests', () => {
             tree.find(1);
         }).toThrow(/^Unable to search empty BST.$/)
     })
+
+    // levelOrder(callback)
+    test('handles BST of height 3', () => {
+        const tree = new Tree([1, 2, 3, 4]);
+        const bfsArr = tree.levelOrder();
+
+        expect(bfsArr).toBe([2, 1, 3, 4]);
+    })
+
+    test('handles BST of height 4', () => {
+        const tree = new Tree([1, 2, 3, 4, 5, 6]);
+        const bfsArr = tree.levelOrder();
+
+        expect(bfsArr).toBe([3, 1, 5, 2, 4, 6]);
+    })
 })
